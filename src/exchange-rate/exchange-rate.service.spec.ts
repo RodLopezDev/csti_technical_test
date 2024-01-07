@@ -31,6 +31,15 @@ describe('ExchangeRateService', () => {
     expect(result.sourceCurrency).toBe(payload.sourceCurrency);
     expect(result.targetCurrency).toBe(payload.targetCurrency);
 
+    const search = service.findOne(
+      payload.sourceCurrency,
+      payload.targetCurrency,
+    );
+    expect(search).toBeDefined();
+    expect(search.rate).toBe(payload.rate);
+    expect(search.sourceCurrency).toBe(payload.sourceCurrency);
+    expect(search.targetCurrency).toBe(payload.targetCurrency);
+
     const secondLoad = service.findAll();
     expect(secondLoad.length).toBe(1);
 
