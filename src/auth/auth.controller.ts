@@ -13,7 +13,7 @@ export class AuthController {
     private readonly authService: AuthService,
   ) {}
 
-  @Post()
+  @Post('login')
   login(@Body() dto: LoginAuthDto) {
     const isLoggin = this.authService.loginMock(dto);
     if (!isLoggin) {
