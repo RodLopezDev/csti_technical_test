@@ -1,4 +1,7 @@
+import { JwtModule } from '@nestjs/jwt';
 import { Test, TestingModule } from '@nestjs/testing';
+
+import { AuthService } from './auth.service';
 import { AuthController } from './auth.controller';
 
 describe('AuthController', () => {
@@ -6,8 +9,17 @@ describe('AuthController', () => {
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
+      imports: [
+        JwtModule.registerAsync({
+          global: true,
+          useFactory: () => ({
+            secret: '12345678',
+            signOptions: { expiresIn: '600s' },
+          }),
+        }),
+      ],
       controllers: [AuthController],
-      providers: [],
+      providers: [AuthService],
     }).compile();
 
     controller = module.get<AuthController>(AuthController);
@@ -15,5 +27,21 @@ describe('AuthController', () => {
 
   it('should be defined', () => {
     expect(controller).toBeDefined();
+  });
+
+  it('should be fail login', () => {
+    const payload = { user: 'rodrigo', password: 'example' };
+    try {
+      controller.login(payload);
+    } catch (e) {
+      expect(e?.message).toBe('BAD_CREDENTIALS');
+    }
+  });
+
+  it('should be logged after that', () => {
+    const payload = { user: 'RODRIGO', password: 'test-to-csti' };
+    const result = controller.login(payload);
+    expect(result).toBeDefined();
+    expect(result.indexOf('ey') === 0).toBeTruthy();
   });
 });
