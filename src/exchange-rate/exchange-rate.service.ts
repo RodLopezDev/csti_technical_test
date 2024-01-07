@@ -1,26 +1,32 @@
 import { Injectable } from '@nestjs/common';
+
+import { ExchangeRateUtil } from './utils/exchange-rate';
+import { ExchangeRate } from './entities/exchange-rate.entity';
 import { CreateExchangeRateDto } from './dto/create-exchange-rate.dto';
-import { UpdateExchangeRateDto } from './dto/update-exchange-rate.dto';
 
 @Injectable()
 export class ExchangeRateService {
-  create(createExchangeRateDto: CreateExchangeRateDto) {
-    return 'This action adds a new exchangeRate';
+  private exchanges: ExchangeRate[] = [];
+
+  create(dto: CreateExchangeRateDto): ExchangeRate {
+    this.exchanges.push(dto);
+    return dto;
   }
 
   findAll() {
-    return `This action returns all exchangeRate`;
+    return this.exchanges;
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} exchangeRate`;
+  findOne(source: string, target: string): ExchangeRate | undefined {
+    return this.exchanges.find((e) =>
+      ExchangeRateUtil.equalsToParams(e, source, target),
+    );
   }
 
-  update(id: number, updateExchangeRateDto: UpdateExchangeRateDto) {
-    return `This action updates a #${id} exchangeRate`;
-  }
-
-  remove(id: number) {
-    return `This action removes a #${id} exchangeRate`;
+  update(dto: CreateExchangeRateDto): ExchangeRate {
+    this.exchanges = this.exchanges.map((e) =>
+      ExchangeRateUtil.equalsToDto(e, dto) ? dto : e,
+    );
+    return dto;
   }
 }

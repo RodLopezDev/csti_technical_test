@@ -1,1 +1,5 @@
-export class ExchangeRate {}
+export interface ExchangeRate {
+  sourceCurrency: string;
+  targetCurrency: string;
+  rate: number;
+}
