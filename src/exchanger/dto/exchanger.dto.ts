@@ -2,15 +2,15 @@ import { ApiProperty } from '@nestjs/swagger';
 import { IsNumber, IsString } from 'class-validator';
 
 export class ExchangerDto {
-  @ApiProperty()
+  @ApiProperty({ default: 15 })
   @IsNumber()
   amount: number;
 
-  @ApiProperty()
+  @ApiProperty({ default: 'PEN' })
   @IsString()
   sourceCurrency: string;
 
-  @ApiProperty()
+  @ApiProperty({ default: 'USD' })
   @IsString()
   targetCurrency: string;
 }

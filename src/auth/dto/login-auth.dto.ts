@@ -3,10 +3,10 @@ import { IsString } from 'class-validator';
 
 export class LoginAuthDto {
   @IsString()
-  @ApiProperty({ default: 'user' })
+  @ApiProperty({ default: 'RODRIGO' })
   user: string;
 
   @IsString()
-  @ApiProperty({ default: 'password' })
+  @ApiProperty({ default: 'test-to-csti' })
   password: string;
 }
