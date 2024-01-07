@@ -1,18 +1,15 @@
 import { Module } from '@nestjs/common';
 import { JwtModule } from '@nestjs/jwt';
+import { ConfigModule } from '@nestjs/config';
 
 import { AuthModule } from './auth/auth.module';
+import { EnvBootstrap, JwtConfig } from './common/env-bootstrap';
 import { ExchangeRateModule } from './exchange-rate/exchange-rate.module';
 
 @Module({
   imports: [
-    JwtModule.registerAsync({
-      global: true,
-      useFactory: () => ({
-        secret: '12345678',
-        signOptions: { expiresIn: '600s' },
-      }),
-    }),
+    ConfigModule.forRoot(EnvBootstrap),
+    JwtModule.registerAsync(JwtConfig),
     AuthModule,
     ExchangeRateModule,
   ],

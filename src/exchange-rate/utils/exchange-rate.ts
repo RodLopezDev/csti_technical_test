@@ -10,7 +10,6 @@ export class ExchangeRateUtil {
   }
 
   static equalsToParams(rate: ExchangeRate, source: string, target: string) {
-    console.log(rate.sourceCurrency === source, rate.targetCurrency === target);
     return rate.sourceCurrency === source && rate.targetCurrency === target;
   }
 }
