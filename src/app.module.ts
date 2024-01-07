@@ -5,6 +5,7 @@ import { ConfigModule } from '@nestjs/config';
 import { AuthModule } from './auth/auth.module';
 import { EnvBootstrap, JwtConfig } from './common/env-bootstrap';
 import { ExchangeRateModule } from './exchange-rate/exchange-rate.module';
+import { ExchangerModule } from './exchanger/exchanger.module';
 
 @Module({
   imports: [
@@ -12,6 +13,7 @@ import { ExchangeRateModule } from './exchange-rate/exchange-rate.module';
     JwtModule.registerAsync(JwtConfig),
     AuthModule,
     ExchangeRateModule,
+    ExchangerModule,
   ],
   controllers: [],
   providers: [],
