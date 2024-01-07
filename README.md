@@ -1,4 +1,4 @@
-## CSTI Technical Test
+# CSTI Technical Test
 
 ## Description
 
