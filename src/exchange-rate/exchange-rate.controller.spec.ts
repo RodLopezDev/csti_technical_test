@@ -112,4 +112,27 @@ describe('ExchangeRateController', () => {
     expect(result?.[0].sourceCurrency).toBe(ratePayload.sourceCurrency);
     expect(result?.[0].targetCurrency).toBe(ratePayload.targetCurrency);
   });
+
+  it('should remove all items', async () => {
+    /** REGISTER A VALUE */
+    const ratePayload: ExchangeRate = {
+      sourceCurrency: 'USD',
+      targetCurrency: 'PEN',
+      rate: 4,
+    };
+    controller.upsert(ratePayload);
+
+    /** LIST REGISTER */
+    const result = controller.findAll();
+    expect(result).toBeDefined();
+    expect(result.length).toBe(1);
+
+    const result2 = controller.cleanUp();
+    expect(result2).toBeTruthy();
+
+    /** VALIDATE IF IT IS CLEAN */
+    const result3 = controller.findAll();
+    expect(result3).toBeDefined();
+    expect(result3.length).toBe(0);
+  });
 });

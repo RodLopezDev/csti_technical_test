@@ -1,5 +1,5 @@
 import { ApiBearerAuth, ApiTags } from '@nestjs/swagger';
-import { Controller, Get, Post, Body, UseGuards } from '@nestjs/common';
+import { Controller, Get, Post, Body, UseGuards, Delete } from '@nestjs/common';
 
 import { AuthGuard } from '../auth/strategy/auth.guard';
 import { ExchangeRateService } from './exchange-rate.service';
@@ -25,5 +25,10 @@ export class ExchangeRateController {
   @Get()
   findAll() {
     return this.exchangeRateService.findAll();
+  }
+
+  @Delete()
+  cleanUp() {
+    return this.exchangeRateService.cleanUp();
   }
 }

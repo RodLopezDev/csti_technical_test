@@ -38,5 +38,11 @@ describe('ExchangeRateService', () => {
     expect(result2.rate).toBe(20);
     expect(result2.sourceCurrency).toBe(payload.sourceCurrency);
     expect(result2.targetCurrency).toBe(payload.targetCurrency);
+
+    const result3 = service.cleanUp();
+    expect(result3).toBeTruthy();
+
+    const thirdLoad = service.findAll();
+    expect(thirdLoad.length).toBe(0);
   });
 });

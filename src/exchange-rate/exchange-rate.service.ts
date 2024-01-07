@@ -29,4 +29,9 @@ export class ExchangeRateService {
     );
     return dto;
   }
+
+  cleanUp() {
+    this.exchanges = [];
+    return true;
+  }
 }
