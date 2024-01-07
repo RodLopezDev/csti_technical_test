@@ -14,7 +14,8 @@ docker run -d --name csti_technical_test_container -p 4000:4000 --env-file .env 
 
 ## Populate Exchange rates
 
-File populate.js get info from [forex](https://fastforex.readme.io/reference/introduction)
+File populate.js get info from [FastForex](https://console.fastforex.io/). You can read more about doc in [this link](https://fastforex.readme.io/reference/introduction).
+
 You need to get a API_KEY and run the file
 
 ```
