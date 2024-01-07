@@ -1,9 +1,11 @@
 import { Module } from '@nestjs/common';
-import { ExchangerService } from './exchanger.service';
+
 import { ExchangerController } from './exchanger.controller';
+import { ExchangeRateModule } from '../exchange-rate/exchange-rate.module';
 
 @Module({
   controllers: [ExchangerController],
-  providers: [ExchangerService],
+  providers: [],
+  imports: [ExchangeRateModule],
 })
 export class ExchangerModule {}

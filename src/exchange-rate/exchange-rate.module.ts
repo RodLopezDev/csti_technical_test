@@ -5,5 +5,6 @@ import { ExchangeRateController } from './exchange-rate.controller';
 @Module({
   controllers: [ExchangeRateController],
   providers: [ExchangeRateService],
+  exports: [ExchangeRateService],
 })
 export class ExchangeRateModule {}
