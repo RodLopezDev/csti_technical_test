@@ -19,6 +19,14 @@ This is a API Rest to exchange currencies, features:
 
 ## Deploying with Docker
 
+Simple local deploy with docker-compose
+
+```bash
+docker-compose --env-file .env.docker up -d --build
+```
+
+> ⚠️ **Warning:** Remover --build when container is built.
+
 ### Generate build image
 
 ```
@@ -30,12 +38,6 @@ docker build -t nestjs_in_memory_db .
 ```
 docker run -d --name nestjs_in_memory_db_container -p 4000:4000 --env-file .env nestjs_in_memory_db
 ```
-
-```bash
-docker-compose --env-file .env.docker up -d --build
-```
-
-> ⚠️ **Warning:** Remover --build when container is built.
 
 ## Screenshot
 
