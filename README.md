@@ -37,6 +37,10 @@ docker-compose --env-file .env.docker up -d --build
 
 > ⚠️ **Warning:** Remover --build when container is built.
 
+## Screenshot
+
+![alt text](docs/swagger.png)
+
 ## Populate Exchange rates
 
 File populate.js get info from [FastForex](https://console.fastforex.io/). You can read more about doc in [this link](https://fastforex.readme.io/reference/introduction).
