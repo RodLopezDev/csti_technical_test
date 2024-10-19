@@ -22,7 +22,7 @@ async function bootstrap() {
   );
 
   const config = new DocumentBuilder()
-    .setTitle('Exchange Currency - Technical Test')
+    .setTitle('Exchange Currency - Service')
     .setDescription('Server')
     .setVersion('1.0')
     .addBearerAuth()
