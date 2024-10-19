@@ -36,7 +36,7 @@ describe('AppController (e2e)', () => {
   it('/auth/login (POST)', async () => {
     return request(app.getHttpServer())
       .post('/auth/login')
-      .send({ user: 'RODRIGO', password: 'test-to-csti' })
+      .send({ user: 'MY_USER', password: 'demo-nest-pwd-ex' })
       .expect(201)
       .then((response) => {
         assert.equal(response.text.indexOf('ey'), 0);

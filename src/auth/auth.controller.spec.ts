@@ -30,7 +30,7 @@ describe('AuthController', () => {
   });
 
   it('should be fail login', () => {
-    const payload = { user: 'rodrigo', password: 'example' };
+    const payload = { user: 'MY_USER', password: 'example' };
     try {
       controller.login(payload);
     } catch (e) {
@@ -39,7 +39,7 @@ describe('AuthController', () => {
   });
 
   it('should be logged after that', () => {
-    const payload = { user: 'RODRIGO', password: 'test-to-csti' };
+    const payload = { user: 'MY_USER', password: 'demo-nest-pwd-ex' };
     const result = controller.login(payload);
     expect(result).toBeDefined();
     expect(result.indexOf('ey') === 0).toBeTruthy();

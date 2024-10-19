@@ -46,8 +46,8 @@ async function main() {
   const { data: token, status: authStatus } = await axios.post(
     `${baseUrl}/auth/login`,
     {
-      user: 'RODRIGO',
-      password: 'test-to-csti',
+      user: 'MY_USER',
+      password: 'demo-nest-pwd-ex',
     },
   );
   if (authStatus !== 201) {

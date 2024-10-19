@@ -1,4 +1,4 @@
-# CSTI Technical Test
+# Single NestJS with InMemory DB
 
 ## Description
 
@@ -22,14 +22,20 @@ This is a API Rest to exchange currencies, features:
 ### Generate build image
 
 ```
-docker build -t csti_technical_test .
+docker build -t nestjs_in_memory_db .
 ```
 
 ### Running Build Container
 
 ```
-docker run -d --name csti_technical_test_container -p 4000:4000 --env-file .env csti_technical_test
+docker run -d --name nestjs_in_memory_db_container -p 4000:4000 --env-file .env nestjs_in_memory_db
 ```
+
+```bash
+docker-compose --env-file .env.docker up -d --build
+```
+
+> ⚠️ **Warning:** Remover --build when container is built.
 
 ## Populate Exchange rates
 

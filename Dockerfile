@@ -16,7 +16,7 @@ FROM --platform=linux/amd64 node:16-alpine as runner
 WORKDIR /app
 
 COPY package*.json ./
-RUN npm install --production
+RUN npm install
 COPY --from=builder /app/dist ./dist
 
 CMD ["node", "dist/main.js"]
